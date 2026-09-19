@@ -1,0 +1,3 @@
+MAE: 8.92 cycles
+R2: 0.668
+Window size: 8
