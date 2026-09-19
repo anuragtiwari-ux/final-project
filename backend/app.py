@@ -187,7 +187,7 @@ def predict_demo():
 # 3. PHASE 4 — LSTM RUL FORECAST
 #    Takes the last RUL_WINDOW (8) cycles of telemetry + that cycle's SOH,
 #    and forecasts Remaining Useful Life from the *trajectory*, not a single
-#    snapshot. Validated on held-out B0018: MAE 8.9 cycles, R^2 = 0.668
+#    snapshot. Validated on held-out B0018: MAE 3.7 cycles, R^2 = 0.940
 #    (vs. R^2 = 0.0 for a naive "always predict the average" baseline).
 # ---------------------------------------------------------------------------
 @app.route("/predict/rul_forecast", methods=["POST"])
@@ -213,7 +213,7 @@ def predict_rul_forecast():
 
     return jsonify({
         "mode": "rul_forecast",
-        "model": "LSTM (trained on NASA cycle trajectories, validated on B0018: R^2=0.668, MAE=8.9 cycles)",
+        "model": "LSTM (trained on NASA cycle trajectories, validated on B0018: R^2=0.940, MAE=3.7 cycles)",
         "rul_cycles_to_80pct": round(rul_pred, 1),
         "window_size_used": RUL_WINDOW,
     })

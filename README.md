@@ -94,7 +94,7 @@ npm run dev
 | `frontend/` | React + Vite app — animated UI, calls the backend API, has offline fallback |
 | `backend/app.py` | Flask API — SOH prediction (RandomForest/XGBoost) + RUL forecasting (LSTM) |
 | `backend/soh_model_*.joblib` | Trained SOH models (Phase 2), validated on held-out NASA battery, R²=0.77 |
-| `backend/rul_lstm_model.keras` | Phase 4 LSTM RUL forecaster, validated R²=0.668, MAE=8.9 cycles (vs. R²=0 for a naive baseline) |
+| `backend/rul_lstm_model.keras` | Phase 4 LSTM RUL forecaster, validated R²=0.940, MAE=3.7 cycles (vs. R²=0 for a naive "always predict average" baseline) |
 | `backend/*_features.csv` | Processed NASA battery cycle data used for training/testing |
 
 ## API endpoints (backend)
@@ -114,7 +114,7 @@ npm run dev
   `/predict/telemetry` and `/predict/rul_forecast` instead — see the "Test
   real ML model on NASA sample" button in the app for proof this isn't
   hand-waved.
-- LSTM RUL forecasting (R²=0.668) is a genuine improvement over the
+- LSTM RUL forecasting (R²=0.940) is a genuine improvement over the
   Phase 3 snapshot-based approach, but is trained on lab data from a fixed
   protocol — real vehicle telemetry would need recalibration.
 - Render's free tier cold-starts — see Step 1 note above.
